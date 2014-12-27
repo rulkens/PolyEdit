@@ -1,4 +1,4 @@
-PolyEdit
-========
+x-polyedit
+================
 
-A rich-text editor for Polymer
+See the [x-polyedit documentation page](http://.../x-polyedit) for more information.

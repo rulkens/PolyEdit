@@ -1,0 +1,60 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<!--
+##### Example
+
+    <x-polyedit></x-polyedit>
+
+@element x-polyedit
+@blurb Element providing solution to [...].
+@status [...]
+@homepage https://.../x-polyedit
+-->
+
+<polymer-element name="x-polyedit" attributes="editable">
+  <template>
+    <link rel="stylesheet" href="x-polyedit.css">
+    <div contenteditable="{{editable}}">
+      <content></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer('x-polyedit', {
+      /**
+       * The `noevent` event is not actually fired from here,
+       * we document it as an example of documenting events.
+       *
+       * @event noevent
+       */
+
+      /**
+       * Is the text editable?
+       *
+       * @attribute editable
+       * @type string
+       */
+      editable: 'false',
+
+      ready: function() {
+      },
+
+      /**
+       * This function will be invoked every time `attr` gets changed.
+       */
+      editableChanged: function() {
+        console.log('editableChanged');
+      },
+
+      /**
+       * The `task` method does [...]
+       *
+       * @method task
+       * @return {Object} Returns [...].
+       * @param {String} dummy Defines [...].
+       */
+      task: function(dummy) {
+      }
+    });
+  </script>
+</polymer-element>

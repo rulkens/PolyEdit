@@ -1,0 +1,77 @@
+:host {
+  display: block; }
+
+/* some text before tags */
+:host([content-style="jade"]) ::content *:before,
+:host([content-style="html"]) ::content *:before,
+:host([content-style="html"]) ::content *:after {
+  font-family: monospace;
+  color: #9f499b;
+  display: inline;
+  opacity: 1;
+  font-size: 1em; }
+
+:host([content-style="html"]) ::content * {
+  font-family: monospace;
+  font-size: 1em;
+  margin: .2em; }
+
+:host ::content *:before,
+:host ::content *:after {
+  opacity: 0;
+  width: 0;
+  font-size: 0;
+  transition: .1s; }
+
+:host([content-style="jade"]) ::content *:before,
+:host([content-style="html"]) ::content *:before {
+  margin-right: .2em; }
+
+:host([content-style="html"]) ::content *:after {
+  margin-left: .2em; }
+
+:host([content-style="jade"]) ::content h1:before {
+  content: "h1"; }
+:host([content-style="jade"]) ::content h2:before {
+  content: "h2"; }
+:host([content-style="jade"]) ::content h3:before {
+  content: "h3"; }
+:host([content-style="jade"]) ::content p:before {
+  content: "p"; }
+:host([content-style="jade"]) ::content span:before {
+  content: "span"; }
+:host([content-style="jade"]) ::content ul:before {
+  content: "ul"; }
+:host([content-style="jade"]) ::content li:before {
+  content: "li"; }
+
+:host([content-style="html"]) ::content h1:before {
+  content: "<h1>"; }
+:host([content-style="html"]) ::content h1:after {
+  content: "</h1>"; }
+:host([content-style="html"]) ::content h2:before {
+  content: "<h2>"; }
+:host([content-style="html"]) ::content h2:after {
+  content: "</h2>"; }
+:host([content-style="html"]) ::content h3:before {
+  content: "<h3>"; }
+:host([content-style="html"]) ::content h3:after {
+  content: "</h3>"; }
+:host([content-style="html"]) ::content p:before {
+  content: "<p>"; }
+:host([content-style="html"]) ::content p:after {
+  content: "</p>"; }
+:host([content-style="html"]) ::content span:before {
+  content: "<span>"; }
+:host([content-style="html"]) ::content span:after {
+  content: "</span>"; }
+:host([content-style="html"]) ::content ul:before {
+  content: "<ul>"; }
+:host([content-style="html"]) ::content ul:after {
+  content: "</ul>"; }
+:host([content-style="html"]) ::content li:before {
+  content: "<li>"; }
+:host([content-style="html"]) ::content li:after {
+  content: "</li>"; }
+
+/*# sourceMappingURL=x-polyedit.css.map */

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>x-polyedit Demo</title>
+
+  <meta name="viewport"
+        content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+
+  <link rel="import" href="bower_components/polymer/polymer.html">
+
+  <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html"/>
+  <link rel="import" href="bower_components/core-dropdown/core-dropdown.html">
+  <link rel="import" href="bower_components/core-dropdown-menu/core-dropdown-menu.html">
+  <link rel="import" href="bower_components/core-menu/core-menu.html">
+  <link rel="import" href="bower_components/core-item/core-item.html">
+
+  <link rel="import" href="x-polyedit.html">
+  <link rel="import" href="demo-service.html"/>
+  <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>-->
+  <style>
+    .test-editor {
+      margin: 10px;
+      border: 1px solid #265a88;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body fullbleed vertical layout unresolved>
+  <core-header-panel flex>
+    <core-toolbar>
+      <h1>PolyEdit Demo</h1>
+    </core-toolbar>
+
+    <template is="auto-binding">
+      <script>
+        console.log('hello world!!');
+        scope = document.querySelector('template[is=auto-binding]');
+        scope.contentStyles = [
+          {label: 'WYSIWYG', value:''},
+          {label:'Jade', value:'jade'},
+          {label:'HTML', value:'html'}
+        ];
+      </script>
+      <style>
+        core-dropdown-menu {
+          border: 1px solid #000;
+        }
+      </style>
+      <demo-service settings="{{settings}}"></demo-service>
+
+      <p>Place HTML within the code editor to see its structure</p>
+      <core-dropdown-menu label="Content Style" relative layout inline center>
+        <core-dropdown class="dropdown">
+          <core-menu>
+            <template repeat="{{contentStyles as style}}">
+              <core-item>{{style.label}}</core-item>
+            </template>
+          </core-menu>
+        </core-dropdown>
+      </core-dropdown-menu>
+
+      <label>Editable
+        <input id="editable" type="checkbox" value="yes" checked?="{{settings.editable}}"/>
+      </label>
+
+      <x-polyedit class="test-editor" id="element" content-style="" editable="{{settings.editable}}">
+        <h1>Code text editor</h1>
+        <p>With highlighting of elements</p>
+        <p>All sorts of things are supported:</p>
+        <ul>
+          <li>list items</li>
+          <li>unordered lists</li>
+        </ul>
+        <p>Another p</p>
+      </x-polyedit>
+    </template>
+
+  </core-header-panel>
+</body>
+</html>

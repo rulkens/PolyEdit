@@ -1,0 +1,59 @@
+$content-styles: jade html;
+$editor-tags: h1 h2 h3 p span ul li;
+
+:host {
+  display: block;
+}
+
+/* some text before tags */
+:host([content-style="jade"]) ::content *:before,
+:host([content-style="html"]) ::content *:before,
+:host([content-style="html"]) ::content *:after {
+  font-family: monospace;
+  color: #9f499b;
+  display: inline;
+  opacity: 1;
+  font-size: 1em;
+}
+
+:host([content-style="html"]) ::content * {
+  font-family: monospace;
+  font-size: 1em;
+  margin: .2em;
+}
+
+:host ::content *:before,
+:host ::content *:after
+{
+  opacity: 0;
+  width: 0;
+  font-size: 0;
+  transition:  .1s;
+}
+
+:host([content-style="jade"]) ::content *:before,
+:host([content-style="html"]) ::content *:before {
+  margin-right: .2em;
+}
+:host([content-style="html"]) ::content *:after {
+  margin-left: .2em;
+}
+
+:host([content-style="jade"]) ::content {
+  @each $tag in $editor-tags {
+    #{$tag}:before {
+      content: '#{$tag}';
+    }
+  }
+}
+
+:host([content-style="html"]) ::content {
+  @each $tag in $editor-tags {
+    #{$tag}:before {
+      content: '<#{$tag}>';
+    }
+    #{$tag}:after {
+      content: '</#{$tag}>';
+    }
+  }
+}

@@ -1,5 +1,5 @@
 $content-styles: jade html;
-$editor-tags: h1 h2 h3 p span ul li;
+$editor-tags: h1 h2 h3 p span div ul li strong b i;
 
 :host {
   display: block;
@@ -11,7 +11,8 @@ $editor-tags: h1 h2 h3 p span ul li;
 :host([content-style="html"]) ::content *:after {
   font-family: monospace;
   color: #9f499b;
-  display: inline;
+  display: inline-block;
+  width: auto;
   opacity: 1;
   font-size: 1em;
 }

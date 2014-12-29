@@ -11,23 +11,16 @@
 @homepage https://.../x-polyedit
 -->
 
-<polymer-element name="x-polyedit" attributes="editable">
+<polymer-element name="x-polyedit" attributes="editable content-s">
   <template>
     <link rel="stylesheet" href="x-polyedit.css">
     <div contenteditable="{{editable}}">
-      <content></content>
+      <content content-style="{{content-style}}"></content>
     </div>
   </template>
 
   <script>
     Polymer('x-polyedit', {
-      /**
-       * The `noevent` event is not actually fired from here,
-       * we document it as an example of documenting events.
-       *
-       * @event noevent
-       */
-
       /**
        * Is the text editable?
        *
@@ -36,15 +29,34 @@
        */
       editable: 'false',
 
-      ready: function() {
+      /**
+       * This function will be invoked every time `editable` gets changed.
+       */
+      editableChanged: function(){
+        console.log('editableChanged to', this.editable);
+      },
+
+      'content-s': '',
+      'content-sChanged': function(){
+        console.log('contentSChanged to', this['content-s']);
       },
 
       /**
-       * This function will be invoked every time `attr` gets changed.
+       * How to style the content
+       *
+       * @attribute editable
+       * @type string
        */
-      editableChanged: function() {
-        console.log('editableChanged');
+//      'contentStyle': '',
+//
+//      contentStyleChanged: function(arg){
+//        console.log('contentStyleChanged', arg);
+//      },
+
+      ready: function() {
       },
+
+
 
       /**
        * The `task` method does [...]

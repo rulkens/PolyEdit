@@ -10,7 +10,7 @@
   <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
   <link rel="import" href="bower_components/polymer/polymer.html">
 
@@ -23,7 +23,7 @@
 
   <link rel="import" href="x-polyedit.html">
   <link rel="import" href="demo-service.html"/>
-  <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>-->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
   <style>
     .test-editor {
       margin: 10px;
@@ -34,55 +34,81 @@
 </head>
 
 <body fullbleed vertical layout unresolved>
-  <core-header-panel flex>
-    <core-toolbar>
-      <h1>PolyEdit Demo</h1>
-    </core-toolbar>
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="/">Home</a></li>
+            <li role="presentation"><a href="/demo.html">Demo</a></li>
+            <li role="presentation"><a href="">Contact</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Polymer Editor</h3>
+      </div>
+      <div class="jumbotron">
+        <h1>Polymer Editor Demo</h1>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <template is="auto-binding">
+            <script>
+              console.log('no');
+              scope = document.querySelector('template[is=auto-binding]');
+              scope.contentStyles = [
+                {label: 'WYSIWYG', value:''},
+                {label:'Jade', value:'jade'},
+                {label:'HTML', value:'html'}
+              ];
+              scope.currentStyle = 'jade';
+              scope.editable = true;
 
-    <template is="auto-binding">
-      <script>
-        console.log('hello world!!');
-        scope = document.querySelector('template[is=auto-binding]');
-        scope.contentStyles = [
-          {label: 'WYSIWYG', value:''},
-          {label:'Jade', value:'jade'},
-          {label:'HTML', value:'html'}
-        ];
-      </script>
-      <style>
-        core-dropdown-menu {
-          border: 1px solid #000;
-        }
-      </style>
-      <demo-service settings="{{settings}}"></demo-service>
+            </script>
+            <style>
+              ul {
+                font-size: 100%;
+              }
+            </style>
+            <demo-service settings="{{settings}}"></demo-service>
 
-      <p>Place HTML within the code editor to see its structure</p>
-      <core-dropdown-menu label="Content Style" relative layout inline center>
-        <core-dropdown class="dropdown">
-          <core-menu>
-            <template repeat="{{contentStyles as style}}">
-              <core-item>{{style.label}}</core-item>
-            </template>
-          </core-menu>
-        </core-dropdown>
-      </core-dropdown-menu>
 
-      <label>Editable
-        <input id="editable" type="checkbox" value="yes" checked?="{{settings.editable}}"/>
-      </label>
+            <p>Place HTML within the code editor to see its structure</p>
 
-      <x-polyedit class="test-editor" id="element" content-style="" editable="{{settings.editable}}">
-        <h1>Code text editor</h1>
-        <p>With highlighting of elements</p>
-        <p>All sorts of things are supported:</p>
-        <ul>
-          <li>list items</li>
-          <li>unordered lists</li>
-        </ul>
-        <p>Another p</p>
-      </x-polyedit>
-    </template>
+            <div class="edit-controls">
+              <label>
+                Content Style
+                <select id="selectContentStyle" value="{{currentStyle}}">
+                  <template repeat="{{contentStyles as style}}">
+                    <option value="{{style.value}}">{{style.label}}</option>
+                  </template>
+                </select></label>
 
-  </core-header-panel>
+              <label>Editable
+                <input id="editable" type="checkbox" value="yes" checked?="{{editable}}"/>
+              </label>
+            </div>
+
+            <x-polyedit
+                    class="test-editor"
+                    id="element"
+                    content-style="{{currentStyle}}"
+                    content-s="{{currentStyle}}"
+                    editable="{{editable}}">
+              <h1>A first heading</h1>
+              <p>And some paragraph text</p>
+              <div class="randomDiv">Text in a div</div>
+              <p>All sorts of things are <span class="doubtful">(not)</span> supported:</p>
+              <h2>A second heading</h2>
+              <ul id="someList">
+                <li>list items</li>
+                <li>unordered lists</li>
+              </ul>
+              <h3 class="special">A third heading with a class</h3>
+              <p>Some text in <strong>Strong stuff</strong>, <i>Italic</i> and <b>Bold</b>.</p>
+            </x-polyedit>
+          </template>
+        </div>
+      </div>
+    </div>
+
 </body>
 </html>

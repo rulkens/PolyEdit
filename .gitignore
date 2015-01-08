@@ -28,7 +28,7 @@ node_modules
 .lock-wscript
 
 # Bower
-bower_components/
+public/bower_components/
 
 # Webstorm
 .idea/

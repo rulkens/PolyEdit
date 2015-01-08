@@ -14,15 +14,8 @@
 
   <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-  <link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
-  <link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html"/>
-  <link rel="import" href="../../bower_components/core-dropdown/core-dropdown.html">
-  <link rel="import" href="../../bower_components/core-dropdown-menu/core-dropdown-menu.html">
-  <link rel="import" href="../../bower_components/core-menu/core-menu.html">
-  <link rel="import" href="../../bower_components/core-item/core-item.html">
-
   <link rel="import" href="x-polyedit.html">
-  <link rel="import" href="../../../demo-service.html"/>
+  <link rel="import" href="demo-service.html"/>
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
   <style>
     .test-editor {
@@ -52,7 +45,6 @@
         <div class="col-lg-6">
           <template is="auto-binding">
             <script>
-              console.log('no');
               scope = document.querySelector('template[is=auto-binding]');
               scope.contentStyles = [
                 {label: 'WYSIWYG', value:''},

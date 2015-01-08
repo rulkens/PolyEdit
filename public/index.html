@@ -1,10 +1,68 @@
 <!DOCTYPE html>
+
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<head>
+    <title>x-polyedit Demo</title>
+
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <link rel="import" href="bower_components/polymer/polymer.html">
+
+    <link rel="import" href="components/x-polyedit/x-polyedit.html">
+    <link rel="import" href="components/x-polyedit/demo-service.html"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <style>
+        .test-editor {
+            margin: 10px;
+            border: 1px solid #265a88;
+            padding: 20px;
+        }
+    </style>
 </head>
-<body>
+
+<body fullbleed vertical layout unresolved>
+<div class="container">
+    <div class="header">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="/">Home</a></li>
+                <li role="presentation"><a href="/public/components/x-polyedit/demo.html">Demo</a></li>
+                <li role="presentation"><a href="">Contact</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">Polymer Editor</h3>
+    </div>
+    <div class="jumbotron">
+        <h1>Test Setup</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <x-test foo="4">Test me three times</x-test>
+        </div>
+    </div>
+
+</div>
+
+<polymer-element name="x-test" attributes="foo">
+    <template>
+        <content></content>
+        <strong>{{foo}}</strong>
+    </template>
+    <script>
+        Polymer('x-test',{
+            foo: 2,
+            fooChanged: function(){
+                console.log('fooChanged', this.foo)
+            }
+        })
+    </script>
+</polymer-element>
 
 </body>
 </html>

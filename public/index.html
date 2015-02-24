@@ -24,6 +24,11 @@
             padding: 20px;
         }
     </style>
+    <script>
+        document.addEventListener('polymer-ready', function(){
+            console.log('Polymer ready for action!');
+        });
+    </script>
 </head>
 
 <body fullbleed vertical layout unresolved>
@@ -41,9 +46,29 @@
     <div class="jumbotron">
         <h1>Test Setup</h1>
     </div>
+    <!--<bs-row>-->
+        <!--<div class="col-lg-6">-->
+            <!--<x-test foo="6">Test me three times</x-test>-->
+        <!--</div>-->
+    <!--</bs-row>-->
     <div class="row">
         <div class="col-lg-6">
-            <x-test foo="4">Test me three times</x-test>
+            <h2>User list</h2>
+            <template is="auto-binding" id="userList">
+                <script>
+                    scope = document.getElementById('userList');
+                    scope.users = [
+                        { name: 'Dude'},
+                        { name: 'Mark'}
+                        ];
+
+                </script>
+                <ul>
+                    <template repeat="{{user in users}}">
+                        <li>{{user.name}}</li>
+                    </template>
+                </ul>
+            </template>
         </div>
     </div>
 
@@ -63,6 +88,13 @@
         })
     </script>
 </polymer-element>
-
+<!-- bootstrap row -->
+<polymer-element name="bs-row">
+    <template>
+        <div class="row">
+            <content></content>
+        </div>
+    </template>
+</polymer-element>
 </body>
 </html>
